@@ -1,0 +1,47 @@
+{
+  "name": "boutique",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "prisma": {
+    "schema": "schema.prisma"
+  },
+  "scripts": {
+    "predev": "prisma generate --schema=./schema.prisma",
+    "dev": "next dev",
+    "build": "prisma generate --schema=./schema.prisma && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "local:setup": "node scripts/local-setup.mjs",
+    "local:stop": "docker compose -f compose.local.yaml down",
+    "db:generate": "prisma generate --schema=./schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=./schema.prisma",
+    "db:deploy": "prisma migrate deploy --schema=./schema.prisma",
+    "admin:create": "node scripts/create-admin.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1145.0",
+    "@aws-sdk/s3-request-presigner": "^3.1145.0",
+    "@prisma/client": "^6.12.0",
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.12",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.16.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "prisma": "^6.12.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

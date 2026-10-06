@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: noma_local
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Run npm run local:setup first}
+      POSTGRES_DB: noma
+    ports:
+      - "127.0.0.1:54329:5432"
+    volumes:
+      - noma-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U noma_local -d noma"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  noma-postgres-data:
