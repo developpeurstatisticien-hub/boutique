@@ -6,19 +6,19 @@
     "node": ">=22.0.0"
   },
   "prisma": {
-    "schema": "schema.prisma"
+    "schema": "prisma/schema.prisma"
   },
   "scripts": {
-    "predev": "prisma generate --schema=./schema.prisma",
+    "predev": "prisma generate --schema=./prisma/schema.prisma",
     "dev": "next dev",
-    "build": "prisma generate --schema=./schema.prisma && next build",
+    "build": "prisma generate --schema=./prisma/schema.prisma && next build",
     "start": "next start",
     "lint": "eslint",
     "local:setup": "node scripts/local-setup.mjs",
     "local:stop": "docker compose -f compose.local.yaml down",
-    "db:generate": "prisma generate --schema=./schema.prisma",
-    "db:migrate": "prisma migrate dev --schema=./schema.prisma",
-    "db:deploy": "prisma migrate deploy --schema=./schema.prisma",
+    "db:generate": "prisma generate --schema=./prisma/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=./prisma/schema.prisma",
+    "db:deploy": "prisma migrate deploy --schema=./prisma/schema.prisma",
     "admin:create": "node scripts/create-admin.mjs"
   },
   "dependencies": {
@@ -33,7 +33,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.16.1",
+    "@netlify/plugin-nextjs": "^5.16.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
